@@ -1,0 +1,38 @@
+@import "../../styles/variables.scss";
+
+.dogPhotoContainer {
+  margin: 0 auto;
+  position: relative;
+}
+
+.dogPhoto {
+  filter: grayscale(100%);
+  max-height: 600px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.fancyTextOverlay {
+  color: $peach;
+  font-size: 60px;
+  font-weight: bold;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  span:nth-child(4n + 1) {
+    color: $red;
+  }
+  span:nth-child(4n + 2) {
+    color: $pink;
+  }
+  span:nth-child(4n + 3) {
+    color: $blue;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 45px;
+  }
+}
