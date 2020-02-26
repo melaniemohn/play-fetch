@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Button from '../Button'
+import SelectBreed from '../SelectBreed'
 import fetchDoggie from '../../utils/fetch.js'
 
 import styles from './styles.module.scss'
@@ -9,19 +10,13 @@ import '../../styles/styles.scss';
 function App() {
   const randomImageUrl = 'https://dog.ceo/api/breeds/image/random';
 
-  // const [breed, setSelectedBreed] = useState('');
   const [doggie, setDoggie] = useState('');
-  // const [isLoading, setIsLoading] = useState(false);
+  const [requestUrl, setRequestUrl] = useState(randomImageUrl);
   const [shouldRefreshRandom, toggleRefreshRandom] = useState(false)
-  const [requestUrl, setRequestUrl] = useState(
-    randomImageUrl
-  );
 
   useEffect(() => {
-    // setIsLoading(true);
     fetchDoggie(requestUrl).then(response => {
       setDoggie(response.message);
-      // setIsLoading(false);
     });
    }, [requestUrl, shouldRefreshRandom]);
 
@@ -44,8 +39,9 @@ function App() {
           }
         }
       >
-        Show me another!
+        Show me a random dog!
       </Button>
+      <SelectBreed handleChange={setRequestUrl} />
     </>
   );
  }

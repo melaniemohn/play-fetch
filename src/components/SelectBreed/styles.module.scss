@@ -1,0 +1,23 @@
+@import "../../styles/variables.scss";
+
+.selectContainer {
+  &:after {
+    content: '\25BE';
+    margin: 5px -15px 0;
+    position: absolute;
+  }
+}
+
+label {
+  padding-right: 10px;
+}
+
+select {
+  background-color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
