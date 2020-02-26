@@ -6,14 +6,14 @@ import fetchDoggie from '../../utils/fetch.js'
 import '../../styles/styles.scss';
 
 function App() {
-  // const requestRandom = 'https://dog.ceo/api/breeds/image/random';
+  const randomImageUrl = 'https://dog.ceo/api/breeds/image/random';
 
   // const [breed, setSelectedBreed] = useState('');
   const [doggie, setDoggie] = useState('');
   // const [isLoading, setIsLoading] = useState(false);
-   const [shouldRefreshRandom, toggleRefreshRandom] = useState(false)
+  const [shouldRefreshRandom, toggleRefreshRandom] = useState(false)
   const [requestUrl, setRequestUrl] = useState(
-    'https://dog.ceo/api/breeds/image/random',
+    randomImageUrl
   );
 
   useEffect(() => {
@@ -21,7 +21,6 @@ function App() {
     fetchDoggie(requestUrl).then(response => {
       setDoggie(response.message);
       // setIsLoading(false);
-       // setIsNewRequest(false);
     });
    }, [requestUrl, shouldRefreshRandom]);
 
@@ -34,7 +33,7 @@ function App() {
         onClick={() => {
             // Wow this is a hacky way to override and rerun useEffect?
             toggleRefreshRandom(!shouldRefreshRandom)
-            setRequestUrl('https://dog.ceo/api/breeds/image/random')
+            setRequestUrl(randomImageUrl)
           }
         }
       >
